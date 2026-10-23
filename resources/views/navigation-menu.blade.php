@@ -61,6 +61,10 @@
                         <x-icon-nav-link href="{{ route('bookings.index') }}" :active="request()->routeIs('bookings.*')" label="Bookings">
                             <x-heroicon-o-calendar-days class="h-6 w-6" />
                         </x-icon-nav-link>
+
+                        <x-icon-nav-link href="{{ route('guests.index') }}" :active="request()->routeIs('guests.*')" label="Guests">
+                            <x-heroicon-o-identification class="h-6 w-6" />
+                        </x-icon-nav-link>
                     @endhasanyrole
 
                     {{-- Waitlist Management --}}

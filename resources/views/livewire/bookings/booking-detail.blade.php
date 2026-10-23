@@ -199,7 +199,13 @@
             <dl class="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
                 <div>
                     <dt class="text-xs uppercase text-gray-500">Guest</dt>
-                    <dd class="text-gray-900">{{ $booking->guest?->full_name }}</dd>
+                    <dd class="text-gray-900">
+                        @if ($booking->guest && ! $booking->guest->trashed())
+                            <a href="{{ route('guests.show', $booking->guest) }}" class="text-indigo-600 hover:underline">{{ $booking->guest->full_name }}</a>
+                        @else
+                            {{ $booking->guest?->full_name }}
+                        @endif
+                    </dd>
                     <dd class="text-gray-600">{{ $booking->guest?->phone }} {{ $booking->guest?->email }}</dd>
                 </div>
                 <div>

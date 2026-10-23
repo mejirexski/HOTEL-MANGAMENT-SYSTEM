@@ -60,7 +60,11 @@
                                 <a href="{{ route('bookings.show', $b) }}" class="text-indigo-600 hover:underline">{{ $b->reference }}</a>
                             </td>
                             <td class="px-4 py-3">
-                                <p class="font-medium text-gray-900">{{ $b->guest?->full_name }}</p>
+                                @if ($b->guest && ! $b->guest->trashed())
+                                    <a href="{{ route('guests.show', $b->guest) }}" class="font-medium text-indigo-600 hover:underline">{{ $b->guest->full_name }}</a>
+                                @else
+                                    <p class="font-medium text-gray-900">{{ $b->guest?->full_name }}</p>
+                                @endif
                                 <p class="text-xs text-gray-500">{{ $b->guest?->phone }}</p>
                             </td>
                             <td class="whitespace-nowrap px-4 py-3">
